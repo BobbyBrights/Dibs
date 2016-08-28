@@ -1,3 +1,12 @@
 <ion-view title="Donate" id="page3">
-    <ion-content padding="true" scroll="false" class="has-header"></ion-content>
+    <ion-content padding="false" scroll="false" class="has-header">
+      <label class="item item-input">
+        <span class="input-label">Establishment</span>
+        <input type="text" ng-model="adress" g-places-autocomplete>
+      </label>
+    <ng-map class="map" center="current-location" zoom="15">
+      <marker position="current-location" on-click="windowPopUp()"></marker>
+      <marker position="{{adress}}" />
+    </ng-map>
+    </ion-content>
 </ion-view>
