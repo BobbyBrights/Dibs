@@ -12,13 +12,7 @@ function ($scope, $stateParams,$firebaseObject,$firebaseArray) {
   });
 
   $scope.windowPopUp = function(){
-    SweetAlert.swal("Here's a message!");
-    // firebase.auth().createUserWithEmailAndPassword("heyhyeyhe@gmail.com","mcdonalds").catch(function(error) {
-    //   // Handle Errors here.
-    //   var errorCode = error.code;
-    //   var errorMessage = error.message;
-    //   // ...
-    // });
+
 
 
   }
@@ -28,9 +22,28 @@ function ($scope, $stateParams,$firebaseObject,$firebaseArray) {
 
 }])
 
-.controller('workerCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('workerCtrl', ['$scope', '$stateParams','$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+function ($scope, $stateParams,$firebaseObject,$firebaseArray,$state) {
+  $scope.firebase = firebase;
+
+  $scope.createUser = function(email,password){
+    console.log(email);
+    firebase.auth().createUserWithEmailAndPassword(email,password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if(errorCode == "auth/email-already-in-use"){
+        alert("The email is in use ");
+        $scope.sucess = false;
+      }
+      // ...
+      $state.go('tabsController.workersHome', {page: 4});
+    });
+     $scope.sucess = true;
+
+  }
+
 
 }])
