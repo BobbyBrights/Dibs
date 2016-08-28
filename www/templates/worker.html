@@ -1,15 +1,21 @@
 <ion-view title="Worker" id="page4">
     <ion-content padding="true" class="has-header">
-
-            <div class="list list-inset">
-                <label class="item item-input">
-                    <input type="email" placeholder="Email" ng-model="email">
-                </label>
-                <label class="item item-input">
-                    <input type="password" placeholder="Password" ng-model="password">
-                </label>
+      <div class="card">
+            <div class="item">
+                <button class="button button-block button-positive" ng-click="scan()">
+                    <i class="icon ion-qr-scanner"></i>
+                    Scan Card
+                </button>
             </div>
-            <a nav-transition="ios" href="#/page1/page4" ngIf="{{sucess}}"><button class="button button-block button-calm" ng-click="createUser(email,password)">Login</button></a>
-
+        </div>
+        <div class="card">
+            <div class="item item-divider">
+                Scan Results
+            </div>
+            <div class="item item-text-wrap">
+                <h1>Name: {{name}}</h1>
+                <h2>Id: {{id}}</h2>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

@@ -4,3 +4,6 @@
 node_modules/
 platforms/
 plugins/
+
+www/templates/workerHome.html
+www/templates/workerHome.html
